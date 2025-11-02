@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+BUILD="${2:-$(mktemp -d)}"
+curl -Lo "$BUILD/slstatus.tar.gz" https://dl.suckless.org/tools/slstatus-1.1.tar.gz
+tar -xzf "$BUILD/slstatus.tar.gz" -C "$BUILD"
+make -C "$BUILD/slstatus-1.1" PREFIX="${1:-/usr/local}" install

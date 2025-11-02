@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+BUILD="${2:-$(mktemp -d)}"
+curl -Lo "$BUILD/dwm.tar.gz" https://dl.suckless.org/dwm/dwm-6.5.tar.gz
+tar -xzf "$BUILD/dwm.tar.gz" -C "$BUILD"
+patch -p1 -d "$BUILD/dwm-6.5" < dwm.diff
+make -C "$BUILD/dwm-6.5" PREFIX="${1:-/usr/local}" install

@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+BUILD="${2:-$(mktemp -d)}"
+curl -Lo "$BUILD/dmenu.tar.gz" https://dl.suckless.org/tools/dmenu-5.2.tar.gz
+tar -xzf "$BUILD/dmenu.tar.gz" -C "$BUILD"
+curl -fsSL https://tools.suckless.org/dmenu/patches/border/dmenu-border-5.2.diff \
+  | patch -p1 -d "$BUILD/dmenu-5.2"
+curl -fsSL https://tools.suckless.org/dmenu/patches/center/dmenu-center-5.2.diff \
+  | patch -p1 -d "$BUILD/dmenu-5.2"
+make -C "$BUILD/dmenu-5.2" PREFIX="${1:-/usr/local}" install

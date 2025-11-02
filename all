@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+BUILD="${2:-$(mktemp -d)}"
+OUT="$BUILD/out"
+./st "$OUT" "$BUILD"
+./dmenu "$OUT" "$BUILD"
+./slstatus "$OUT" "$BUILD"
+./dwm "$OUT" "$BUILD"
+cp -f "$OUT/"* "${1:-/usr/local}/"

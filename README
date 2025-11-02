@@ -1,0 +1,16 @@
+Suckless
+========
+This folder contains automations for building patched Suckless projects.
+
+Requirements
+------------
+In order to build these projects, you the Xlib header files.
+
+Installation
+------------
+
+    [project] [out] [build]
+
+Notes:
+- `[out]` is optional, defaults to /usr/local
+- `[build]` is optional, defaults to a temporary folder
